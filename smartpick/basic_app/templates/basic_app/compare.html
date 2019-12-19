@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style >
+  .container{
+      margin: auto;
+  }
+  .item{
+  }
+  .img_box{
+    padding: 10px 10px 10px 10px;
+    display: inline-block;
+    width: 285px;
+    height: 285px;
+    vertical-align: middle;
+  }
+  .img{
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .box_r{
+    text-align: center;
+  }
+  .buy_now{
+    width: 120px;
+    height: 40px;
+  }
+  .jumbotron{
+    text-align: center;
+    font-size: 30px;
+
+  }
+  .jumbotron h1{
+    color: red;
+  }
+</style>
+<br>
+<br>
+
+    <div class="container">
+      {% if CMP %}
+      <div class="jumbotron">
+        <h1>No Item To Compare!</h1>
+      </div>
+      {% else %}
+        <div class="">
+            <div class="box row item">
+                    <div class="box_r col-sm img_box">
+
+                    </div>
+                    <div class="box_r col-sm img_box">
+                        {% for i in p %}
+                        <img class="img" src="{{i.img}}" alt="{{i.name}}">
+                        {% endfor %}
+                    </div>
+                    <div class="box_r col-sm img_box">
+                      {% for i in q %}
+                      <img class="img" src="{{i.img}}" alt="{{i.name}}">
+                      {% endfor %}
+                    </div>
+                    <div class="box_r col-sm img_box">
+                      {% for i in r %}
+                      <img class="img" src="{{i.img}}" alt="{{i.name}}">
+                      {% endfor %}
+                    </div>
+
+            </div>
+              <div class="box row">
+                      <div class="box_r col-sm">
+
+                      </div>
+                        <div class="box_r col-sm">
+                          {% for i in p %}
+                            {{i.name}}
+                          {% endfor %}
+
+                        </div>
+                        <div class="box_r col-sm">
+                          {% for i in q %}
+                            {{i.name}}
+                          {% endfor %}
+
+                        </div>
+                        <div class="box_r col-sm">
+                          {% for i in r %}
+                            {{i.name}}
+                          {% endfor %}
+
+                        </div>
+                </div>
+                <div class="box row">
+                        <div class="box_r col-sm">
+
+                        </div>
+                          <div class="box_r col-sm">
+                            {% for i in p %}
+                            ₹{{i.price}}
+                            {% endfor %}
+
+                          </div>
+                          <div class="box_r col-sm">
+                            {% for i in q %}
+                            ₹{{i.price}}
+                            {% endfor %}
+
+                          </div>
+                          <div class="box_r col-sm">
+                            {% for i in r %}
+                            ₹{{i.price}}
+                            {% endfor %}
+                          </div>
+                  </div>
+                    <div class="box row">
+                            <div class="box_r col-sm">
+
+                            </div>
+                              <div class="box_r col-sm">
+                                {% for i in p %}
+                                  <a href="{{i.link}}" target="_blank" class="">
+                                    <button type="button" class="buy_now btn btn-primary" name="button" >Buy Now</button>
+                                  </a>
+                                {% endfor %}
+
+                              </div>
+                              <div class="box_r col-sm">
+                                {% for i in q %}
+                                  <a href="{{i.link}}" target="_blank" class="">
+                                    <button type="button" class="buy_now btn btn-primary" name="button" >Buy Now</button>
+                                  </a>
+                                {% endfor %}
+
+                              </div>
+                              <div class="box_r col-sm">
+                                {% for i in r %}
+                                  <a href="{{i.link}}" target="_blank" class="">
+                                    <button type="button" class="buy_now btn btn-primary" name="button" >Buy Now</button>
+                                  </a>
+                                {% endfor %}
+
+                              </div>
+                      </div>
+      </div>
+
+      <hr>
+      <div class="spec row">
+        <div class="box_r col-sm">
+
+              {% for i in p %}
+                {% for j in i.spec_item %}
+                  <div class="" style="height:70px">
+                    {{j}}
+                  </div>
+                  <hr>
+                {% endfor %}
+              {% endfor %}
+        </div>
+          <div class="box_r col-sm">
+            {% for i in p %}
+              {% for j in i.spec_value %}
+              <div class="" style="height:70px">
+                {{j}}
+              </div>
+              <hr>
+              {% endfor %}
+              {% endfor %}
+          </div>
+          <div class="box_r col-sm">
+
+            {% for i in q %}
+            {% for j in i.spec_value %}
+            <div class="" style="height:70px">
+              {{j}}
+            </div>
+            <hr>
+            {% endfor %}
+            {% endfor %}
+          </div>
+          <div class="box_r col-sm">
+
+            {% for i in r %}
+            {% for j in i.spec_value %}
+            <div class="" style="height:70px">
+              {{j}}
+            </div>
+            <hr>
+            {% endfor %}
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}
